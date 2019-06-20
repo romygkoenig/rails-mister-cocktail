@@ -1,24 +1,26 @@
 
 <div class="container new-dose">
   <h1 class="cocktail-name"><%= @cocktail.name %></h1>
-    <p>
+  <p>
 
-      <button type="button" class="btn btn-outline-light"><%= link_to "Add dose", new_cocktail_dose_path(@cocktail) %></button>
+    <button type="button" class="btn btn-outline-light"><%= link_to "Add dose", new_cocktail_dose_path(@cocktail) %></button>
 
-    </p>
+  </p>
 
   <div class="container perspective">
-    <div class="row">
+    <div class="row justify-content-center">
       <% @cocktail.doses.each do |dose| %>
       <div class="father col-xs-6 col-sm-4">
         <div class="front ">
+          <div class="d-flex justify-content-between align-items-center px-5">
             <%=dose.ingredient.name %>
             <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end  %>
+            <i class="fas fa-trash-alt trash"></i>
+          </div>
+          <% end  %>
         </div>
         <div class="back">
-            <%= dose.description %>
+          <%= dose.description %>
         </div>
 
       </div>
